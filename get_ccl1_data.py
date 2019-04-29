@@ -15,7 +15,7 @@ def get_ccl1_data_from_excel(fileName):
 	#plotly.tools.set_credentials_file(username='iamtonyc', api_key='9Q3RlU4RrMOpm8AFAMzX')
 	# filename, file_extension = os.path.splitext(filename)
 	# if file_extension==".csv"
-	# df = pd.read_csv('https://github.com/iamtonyc/ccl.data/blob/master/ccl.csv')
+	# df = pd.read_csv('https://raw.githubusercontent.com/iamtonyc/ccl.data/master/ccl.csv')
 
 	xls = pd.ExcelFile('ccl.xlsx')
 	xls = pd.ExcelFile(fileName)
