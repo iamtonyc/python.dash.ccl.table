@@ -1,4 +1,22 @@
 def get_ccl1_data_from_excel(fileName):
+	import pandas as pd
+
+	xls = pd.ExcelFile(fileName)
+	df = xls.parse("Sheet1")
+	return get_ccl1_data_from_data_frame(df)
+
+
+
+def get_ccl1_data_from_csv(url):
+	import pandas as pd
+	
+	df=pd.read_csv(url)
+	return get_ccl1_data_from_data_frame(df)	
+
+
+
+
+def get_ccl1_data_from_data_frame(df):
 	import numpy as np
 	import pandas as pd
 	import matplotlib as plt
@@ -17,9 +35,7 @@ def get_ccl1_data_from_excel(fileName):
 	# if file_extension==".csv"
 	# df = pd.read_csv('https://raw.githubusercontent.com/iamtonyc/ccl.data/master/ccl.csv')
 
-	xls = pd.ExcelFile('ccl.xlsx')
-	xls = pd.ExcelFile(fileName)
-	df = xls.parse("Sheet1")
+
 
 	dfMonthHigh=df.groupby(df['date'].dt.strftime('%Y-%m'))['ccl'].max().sort_values()
 	dfMonthHigh=dfMonthHigh.reset_index()
