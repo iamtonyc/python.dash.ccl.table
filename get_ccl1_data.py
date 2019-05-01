@@ -10,7 +10,7 @@ def get_ccl1_data_from_excel(fileName):
 def get_ccl1_data_from_csv(url):
 	import pandas as pd
 	
-	df=pd.read_csv(url)
+	df=pd.read_csv(url,parse_dates=['date'])
 	return get_ccl1_data_from_data_frame(df)	
 
 
