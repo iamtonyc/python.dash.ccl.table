@@ -10,7 +10,7 @@ def get_ccl1_data_from_excel(fileName):
 def get_ccl1_data_from_csv(url):
 	import pandas as pd
 	
-	df=pd.read_csv(url)
+	df=pd.read_csv(url,parse_dates=['date'])
 	return get_ccl1_data_from_data_frame(df)	
 
 
@@ -33,7 +33,7 @@ def get_ccl1_data_from_data_frame(df):
 	#plotly.tools.set_credentials_file(username='iamtonyc', api_key='9Q3RlU4RrMOpm8AFAMzX')
 	# filename, file_extension = os.path.splitext(filename)
 	# if file_extension==".csv"
-	# df = pd.read_csv('https://raw.githubusercontent.com/iamtonyc/ccl.data/master/ccl.csv')
+	# df = pd.read_csv('https://raw.githubusercontent.com/iamtonyc/ccl.data/master/ccl.csv',parse_dates=['date'])
 
 
 
@@ -66,4 +66,6 @@ def get_ccl1_data_from_data_frame(df):
 	dfMerge1.columns=['month','open','high','low','close']
 
 	dfMerge1=dfMerge1.sort_values(by=['month'])
+	dfMerge1=dfMerge1.reset_index(drop=True)
+
 	return dfMerge1
